@@ -135,7 +135,7 @@ const StudentForm = ({ onSuccess }) => {
       </div>
 
       <button type="submit">
-        {existingStudent ? "Save Changes" : "Add Teacher"}
+        {existingStudent ? "Save Changes" : "Add Student"}
       </button>
     </form>
   );
