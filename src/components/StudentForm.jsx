@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addStudentAsync, updateStudentAsync } from "../features/studentsSlice";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const StudentForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const existingStudent = location.state?.studentDetails;
 
@@ -52,6 +53,8 @@ const StudentForm = ({ onSuccess }) => {
           updatedStudent: studentData,
         }),
       ).unwrap();
+
+      navigate("/");
     } else {
       await dispatch(addStudentAsync(studentData)).unwrap();
     }

@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { addTeacherAsync, updateTeacherAsync } from "../features/teacherSlice";
 
 const TeacherForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
   const location = useLocation();
+  const navigate = useNavigate();
 
   const existingTeacher = location.state?.teacher;
 
@@ -46,6 +47,7 @@ const TeacherForm = ({ onSuccess }) => {
           updatedData: teacherData,
         }),
       ).unwrap();
+      navigate("/teachers");
     } else {
       await dispatch(addTeacherAsync(teacherData)).unwrap();
     }
