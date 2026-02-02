@@ -93,7 +93,7 @@ const TeacherForm = ({ onSuccess }) => {
       <div>
         <label>Gender</label>
         <div className="radio-group">
-          <label className="row">
+          <label className="">
             <input
               type="radio"
               value="Male"
@@ -103,7 +103,7 @@ const TeacherForm = ({ onSuccess }) => {
             Male
           </label>
 
-          <label className="row">
+          <label className="">
             <input
               type="radio"
               value="Female"
@@ -119,7 +119,7 @@ const TeacherForm = ({ onSuccess }) => {
         <label>Subjects</label>
         <div className="checkbox-group">
           {["Mathematics", "Physics", "Chemistry"].map((sub) => (
-            <label key={sub} className="row">
+            <label key={sub} className="">
               <input
                 type="checkbox"
                 checked={subjects.includes(sub)}
