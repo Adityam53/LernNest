@@ -28,7 +28,7 @@ const TeacherForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !age || !gender || !subjects.length === 0) {
+    if (!name || !age || !gender || subjects.length === 0) {
       setError("Please fill all required fields");
       return;
     }
