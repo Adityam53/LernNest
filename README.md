@@ -1,16 +1,178 @@
-# React + Vite
+# Student Management App – Redux Toolkit
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A frontend application to manage students and school data with full CRUD functionality, filtering, sorting, and reporting. The app uses Redux Toolkit for state management and integrates async operations for handling API-based data.
+Developed using React JS, React Router and Redux Toolkit. 
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Demo Link
 
-## React Compiler
+[Live Demo](https://lern-nest.vercel.app/)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Quick Start
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```id="v1r8kq"
+git clone <your-repo-url>
+cd student-management
+npm install
+npm run dev
+```
+
+---
+
+## Technologies
+
+* React JS
+* React Router
+* Redux Toolkit
+* Axios
+
+---
+
+## Demo Video
+
+Watch a walkthrough of all major features of this app: [Loom Video](https://www.loom.com/share/004c2eafc3e54576b0f002f5028f35fb)
+
+---
+
+## Features
+
+**Authentication (Optional / Backend Ready)**
+
+* Supports backend integration for authentication
+* JWT-based flow supported (if backend connected)
+
+---
+
+**Student View**
+
+* Fetch and display list of students
+* Loading and error handling
+* Uses async thunk to fetch data
+* Displays student list using reusable components
+
+---
+
+**Add Student**
+
+* Form to add new students
+* Fields include:
+
+  * Name
+  * Age
+  * Grade
+  * Gender
+* Form validation and error handling
+* Dispatch async action to add student
+
+---
+
+**Update Student**
+
+* Edit existing student details
+* Pre-filled form for editing
+* Uses route state to pass data
+* Updates Redux store after editing
+
+---
+
+**Delete Student**
+
+* Delete student from detail view
+* Updates Redux store instantly
+* Removes student using filter logic
+
+---
+
+**Student Details**
+
+* View detailed information of a student
+* Includes:
+
+  * Name
+  * Grade
+  * Gender
+  * Marks
+  * Attendance
+* Option to edit or delete
+
+---
+
+**Class View**
+
+* Filter students by:
+
+  * All
+  * Boys
+  * Girls
+* Sort students by:
+
+  * Name
+  * Marks
+  * Attendance
+* Dynamic filtering and sorting using Redux state
+
+---
+
+**School View**
+
+* Displays school-level statistics:
+
+  * Total students
+  * Average attendance
+  * Average marks
+  * Top-performing student
+* Data calculated using student records
+
+---
+
+**Filtering & Sorting**
+
+* Centralized filter and sort logic using Redux
+* Real-time UI updates based on selected filters
+* Efficient state updates
+
+---
+
+## API Reference
+
+### **GET /students**<br>
+
+Fetch all students
+
+---
+
+### **POST /students**<br>
+
+Add a new student
+
+Sample Request:<br>
+
+```id="7rq5wh"
+{
+  "name": "John",
+  "age": 16,
+  "grade": "10th",
+  "gender": "Male"
+}
+```
+
+---
+
+### **POST /students/:id**<br>
+
+Update student details
+
+---
+
+### **DELETE /students/:id**<br>
+
+Delete student
+
+---
+
+## Contact
+
+For bugs or feature requests, please reach out to ([adityamoorjmalani53@gmail.com](mailto:adityamoorjmalani53@gmail.com))
