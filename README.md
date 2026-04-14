@@ -1,7 +1,7 @@
 # Student Management App – Redux Toolkit
 
-A frontend application to manage students and school data with full CRUD functionality, filtering, sorting, and reporting. The app uses Redux Toolkit for state management and integrates async operations for handling API-based data.
-Developed using React JS, React Router and Redux Toolkit. 
+A fullstack application to manage students and school data with full CRUD functionality, filtering, sorting, and reporting. The app uses Redux Toolkit for state management and integrates async operations for handling API-based data.
+Developed using React JS, React Router and Redux Toolkit, Express, Node.js, MongoDB, Chart.js. 
 
 ---
 
@@ -13,7 +13,7 @@ Developed using React JS, React Router and Redux Toolkit.
 
 ## Quick Start
 
-```id="v1r8kq"
+```
 git clone <your-repo-url>
 cd student-management
 npm install
