@@ -15,7 +15,8 @@ Developed using React JS, React Router and Redux Toolkit, Express, Node.js, Mong
 
 ```
 git clone https://github.com/Adityam53/LernNest
-cd student-management
+cd Learnest
+cd FrontEnd
 npm install
 npm run dev
 ```
