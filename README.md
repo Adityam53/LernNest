@@ -14,7 +14,7 @@ Developed using React JS, React Router and Redux Toolkit, Express, Node.js, Mong
 ## Quick Start
 
 ```
-git clone https://github.com/Adityam53/LernNest
+git clone https://github.com/Adityam53/LernNest.git
 cd LearNest
 cd FrontEnd
 npm install
