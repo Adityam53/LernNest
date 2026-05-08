@@ -1,23 +1,21 @@
 #root {
-  max-width: 1100px;
+  width: min(1350px, calc(100% - 2rem));
   margin: auto;
-  padding: 2rem 1.5rem 3rem;
+  padding: 1.5rem 0 4rem;
 }
 
-/* ---------- LAYOUT ---------- */
-
 .page {
-  background: var(--card);
-  padding: 2rem;
-  border-radius: 14px;
+  background: rgba(17, 24, 39, 0.55);
+  backdrop-filter: blur(20px);
   border: 1px solid var(--border);
-  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  border-radius: 28px;
+  padding: 2rem;
 }
 
 .stack {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 1.4rem;
 }
 
 .row {
@@ -26,271 +24,494 @@
   flex-wrap: wrap;
 }
 
-.center {
-  text-align: center;
-}
-
-/* ---------- NAVBAR ---------- */
-
-.nav {
+.section-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  margin-bottom: 2rem;
-  background: var(--card);
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  min-height: 64px;
+  gap: 1rem;
 }
 
-.nav h3 {
-  margin: 0;
-  font-size: 1.1rem;
-  line-height: 1;
+/* NAVBAR */
+
+.nav {
+  position: sticky;
+  top: 1rem;
+  z-index: 999;
+
   display: flex;
+  justify-content: space-between;
   align-items: center;
+
+  padding: 1rem 1.4rem;
+  margin-bottom: 2rem;
+
+  background: rgba(10, 10, 15, 0.72);
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  border-radius: 22px;
+}
+
+.brand {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.brand h3 {
+  font-size: 1.2rem;
+}
+
+.brand span {
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .nav ul {
-  list-style: none;
   display: flex;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+  list-style: none;
   margin: 0;
   padding: 0;
 }
 
-.nav li {
-  display: flex;
-  align-items: center;
-}
-
 .nav a {
   color: var(--muted);
-  font-size: 0.95rem;
   transition: 0.2s ease;
-  display: flex;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+}
+
+.nav a:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* HERO */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 5rem 3rem;
+
+  border-radius: 32px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(99, 102, 241, 0.22),
+      transparent 30%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.03),
+      rgba(255, 255, 255, 0.01)
+    );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 3rem;
   align-items: center;
-  line-height: 1;
 }
 
+.hero p {
+  max-width: 620px;
+  font-size: 1.08rem;
+}
 
-/* ---------- DRAWER ---------- */
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
 
-.drawer-title {
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--muted);
+.secondary-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.dashboard-preview {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 28px;
+  padding: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.preview-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 1rem;
   margin-top: 1rem;
-  cursor: default;
 }
 
-.nav-links li:not(.drawer-title) {
+/* CARDS */
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.4rem;
 }
 
-/* ---------- HAMBURGER ---------- */
-
-.hamburger {
-  display: none;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.4rem;
 }
-
-.hamburger span {
-  width: 22px;
-  height: 2px;
-  background: var(--text);
-  border-radius: 2px;
-  transition: 0.2s;
-}
-
-.hamburger:hover span {
-  opacity: 0.7;
-}
-
-/* ---------- CARDS ---------- */
 
 .card {
-  background: var(--soft);
-  padding: 1rem 1.2rem;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  transition: 0.2s;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.03),
+    rgba(255, 255, 255, 0.01)
+  );
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 24px;
+
+  padding: 1.4rem;
+
+  transition: all 0.3s ease;
 }
 
 .card:hover {
-  border-color: var(--accent);
+  transform: translateY(-6px);
+
+  border-color: rgba(139, 92, 246, 0.35);
+
+  box-shadow: 0 14px 50px rgba(0, 0, 0, 0.35);
 }
 
-.list {
+.card-top {
   display: flex;
-  flex-direction: column;
-  gap: 0.7rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* ---------- FORM ---------- */
+.avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0.35rem 0.7rem;
+
+  border-radius: 999px;
+
+  background: rgba(99, 102, 241, 0.18);
+
+  color: #c7d2fe;
+
+  font-size: 0.78rem;
+}
+
+.metric {
+  margin-top: 1rem;
+}
+
+.metric strong {
+  display: block;
+  font-size: 2rem;
+}
+
+.metric span {
+  color: var(--muted);
+}
+
+/* FORM */
 
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-  max-width: 420px;
+  gap: 1.2rem;
+
+  max-width: 580px;
   margin: auto;
 }
 
-input:focus,
-select:focus {
-  outline: none;
-  border-color: var(--accent);
+.form-card {
+  padding: 2rem;
 }
 
-/* ---------- RADIO / CHECKBOX ---------- */
+.radio-group,
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
 
 .radio-group label,
 .checkbox-group label {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  cursor: pointer;
-  color: var(--text);
-}
 
-.radio-group input,
-.checkbox-group input {
-  width: auto;
-  margin: 0;
-  accent-color: var(--accent);
-}
+  padding: 0.8rem 1rem;
 
-/* ---------- UI HELPERS ---------- */
+  border-radius: 14px;
 
-.badge {
-  background: var(--accent);
-  padding: 0.25rem 0.6rem;
-  border-radius: 999px;
-  font-size: 0.75rem;
-}
+  background: rgba(255, 255, 255, 0.04);
 
-.subtle {
-  color: var(--muted);
-  font-size: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .details {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin: 1rem 0 1.5rem;
+  gap: 0.8rem;
+  margin-top: 1.5rem;
 }
 
 .details p {
   margin: 0;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1.5rem;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.04);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.stat-card h2 {
+  font-size: 2rem;
+  margin-top: 1rem;
+}
+
+/* =========================
+   CLASS VIEW
+========================= */
+
+.class-view {
+  gap: 1.8rem;
+}
+
+.class-title {
+  margin-bottom: 0.2rem;
+}
+
+.class-controls {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+
+  padding: 1.2rem;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.control-group {
+  flex: 1;
+  min-width: 220px;
+}
+
+.control-group label {
+  margin-bottom: 0.6rem;
+
+  font-size: 0.88rem;
+
   color: var(--muted);
-  font-size: 0.95rem;
 }
 
-.details span {
-  color: var(--text);
-  font-weight: 500;
-  margin-right: 6px;
+.student-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
-button {
-  transition: 0.2s;
+.class-card-minimal {
+  padding: 1.2rem 1.4rem;
 }
 
-button:active {
-  transform: scale(0.97);
+.student-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
 }
 
-/* ---------- MOBILE ---------- */
+.student-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
 
-@media (max-width: 700px) {
+.avatar-sm {
+  width: 48px;
+  height: 48px;
 
-  .hamburger {
-    display: flex;
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, var(--accent), var(--accent-2));
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-weight: 700;
+
+  color: white;
+
+  flex-shrink: 0;
+}
+
+.student-left h3 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.student-left p {
+  margin: 0.2rem 0 0;
+
+  color: var(--muted);
+
+  font-size: 0.88rem;
+}
+
+.student-right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.student-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.student-stat span {
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.student-stat strong {
+  font-size: 1rem;
+}
+
+.class-card-minimal:hover {
+  transform: translateY(-4px);
+
+  border-color: rgba(139, 92, 246, 0.35);
+
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* MOBILE */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.hamburger span {
+  width: 24px;
+  height: 2px;
+  background: white;
+}
+
+@media (max-width: 1100px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
   }
 
-  .nav ul:not(.nav-links) {
-    display: none;
+  .grid-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .hamburger {
+    display: flex;
   }
 
   .nav-links {
     position: fixed;
     top: 0;
     right: 0;
-    width: 230px;
+
+    width: 260px;
     height: 100vh;
-    background: var(--card);
-    display: flex;
+
+    background: #111827;
+
     flex-direction: column;
-    padding: 5rem 2rem 2rem;
-    gap: 1.5rem;
+
+    padding: 6rem 2rem;
+
     transform: translateX(100%);
-    transition: transform 0.3s ease;
-    z-index: 1001;
+
+    transition: 0.3s ease;
   }
 
   .nav-links.show {
     transform: translateX(0);
   }
 
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 1000;
+  .hero {
+    padding: 3rem 1.5rem;
   }
-}
 
-/* ---------- RESPONSIVE ---------- */
-
-@media (max-width: 900px) {
-  #root {
-    padding: 1.5rem 1rem 2rem;
+  .grid-3,
+  .grid-4,
+  .stats-grid {
+    grid-template-columns: 1fr;
   }
 
   .page {
-    padding: 1.5rem;
+    padding: 1.4rem;
   }
 
-  .form {
-    max-width: 100%;
-  }
-}
-
-@media (max-width: 600px) {
-  #root {
-    padding: 1rem 0.7rem 1.5rem;
-  }
-
-  .page {
-    padding: 1.2rem;
-    border-radius: 10px;
-  }
-
-  .nav {
-    padding: 1rem;
-  }
-
-  .row {
+  .student-row {
     flex-direction: column;
+    align-items: flex-start;
   }
 
-  .card {
-    padding: 1rem;
-  }
-}
-
-@media (max-width: 400px) {
-  .page {
-    padding: 1rem;
-  }
-
-  button {
+  .student-right {
     width: 100%;
+
+    justify-content: space-between;
+  }
+
+  .class-controls {
+    flex-direction: column;
   }
 }

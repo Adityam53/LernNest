@@ -7,9 +7,10 @@ const NavBar = () => {
   return (
     <>
       <nav className="nav">
-        <h3>
-          <Link to="/">School Management System</Link>
-        </h3>
+        <Link to="/" className="brand">
+          <h3>Learnest</h3>
+          <span>Modern Learning Platform</span>
+        </Link>
 
         <div className="hamburger" onClick={() => setOpen(true)}>
           <span />
@@ -18,26 +19,33 @@ const NavBar = () => {
         </div>
 
         <ul className={`nav-links ${open ? "show" : ""}`}>
-          <li className="drawer-title">{open && "Explore"}</li>
-
           <li>
             <Link to="/" onClick={() => setOpen(false)}>
+              Dashboard
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/students" onClick={() => setOpen(false)}>
               Students
             </Link>
           </li>
+
           <li>
             <Link to="/teachers" onClick={() => setOpen(false)}>
               Teachers
             </Link>
           </li>
+
           <li>
             <Link to="/class" onClick={() => setOpen(false)}>
-              Class
+              Classroom
             </Link>
           </li>
+
           <li>
             <Link to="/school" onClick={() => setOpen(false)}>
-              School
+              Analytics
             </Link>
           </li>
         </ul>

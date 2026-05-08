@@ -10,35 +10,51 @@ const TeacherList = () => {
 
   if (addTeacher) {
     return (
-      <div>
+      <div className="page form-card">
         <TeacherForm onSuccess={() => setAddTeacher(false)} />
-        <button onClick={() => setAddTeacher(false)}>Back to List</button>
       </div>
     );
   }
 
   return (
-    <div className="page stack">
-      <h1>Teachers List</h1>
+    <div className="stack">
+      <div className="section-title">
+        <div>
+          <h2>Teachers</h2>
+          <p>Manage faculty, subjects and educational workflow.</p>
+        </div>
 
-      <button onClick={() => setAddTeacher(true)}>Add Teacher</button>
+        <button onClick={() => setAddTeacher(true)}>Add Teacher</button>
+      </div>
 
-      {status === "loading" && <p>Loading...</p>}
+      {status === "loading" && <p>Loading teachers...</p>}
       {error && <p>{error}</p>}
 
-      {teachers.map((teacher) => (
-        <Link to={`/teachers/${teacher._id}`} key={teacher._id}>
-          <div className="card">
-            {teacher.name} (Age: {teacher.age}) {teacher.gender}
-            <div>
-              Subjects:
-              {teacher.subjects.map((sub, index) => (
-                <div key={index}>{sub}</div>
-              ))}
+      <div className="grid-3">
+        {teachers.map((teacher) => (
+          <Link to={`/teachers/${teacher._id}`} key={teacher._id}>
+            <div className="card">
+              <div className="card-top">
+                <div className="avatar">{teacher.name.charAt(0)}</div>
+
+                <span className="badge">Faculty</span>
+              </div>
+
+              <h3 style={{ marginTop: "1rem" }}>{teacher.name}</h3>
+
+              <p>{teacher.gender}</p>
+
+              <div className="row">
+                {teacher.subjects.map((sub) => (
+                  <span className="badge" key={sub}>
+                    {sub}
+                  </span>
+                ))}
+              </div>
             </div>
-          </div>{" "}
-        </Link>
-      ))}
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

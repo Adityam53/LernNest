@@ -9,6 +9,7 @@ import ClassView from "./Pages/ClassView";
 import Teachers from "./features/Teachers";
 import TeacherForm from "./components/TeacherForm";
 import TeacherDetails from "./Pages/TeacherDetails";
+import HomePage from "./Pages/HomePage";
 
 function App() {
   return (
@@ -16,7 +17,8 @@ function App() {
       <Router>
         <NavBar />
         <Routes>
-          <Route path="/" element={<Students />}></Route>
+          <Route path="/" element={<HomePage />}></Route>
+          <Route path="/students" element={<Students />} />
           <Route path="/:id" element={<StudentDetails />}></Route>
           <Route path="/school" element={<School />}></Route>
           <Route path="/editStudent" element={<StudentForm />}></Route>

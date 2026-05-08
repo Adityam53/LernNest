@@ -42,34 +42,65 @@ const ClassView = () => {
   };
 
   return (
-    <div className="page stack">
-      <h1>Class View</h1>
+    <div className="page stack class-view">
+      <h1 className="class-title">Class View</h1>
 
-      <label htmlFor="">Filter By Gender</label>
-      <select value={filter} onChange={handleFilterChange}>
-        <option value="All">All</option>
-        <option value="Boys">Boys</option>
-        <option value="Girls">Girls</option>
-      </select>
-      <br />
-      <label htmlFor="">Sort By Name</label>
-      <select value={sortBy} onChange={handleSortChange}>
-        <option value="name">Name</option>
-        <option value="marks">Marks</option>
-        <option value="attendance">Attendance</option>
-      </select>
+      <div className="class-controls">
+        <div className="control-group">
+          <label>Filter By Gender</label>
+
+          <select value={filter} onChange={handleFilterChange}>
+            <option value="All">All</option>
+            <option value="Boys">Boys</option>
+            <option value="Girls">Girls</option>
+          </select>
+        </div>
+
+        <div className="control-group">
+          <label>Sort By</label>
+
+          <select value={sortBy} onChange={handleSortChange}>
+            <option value="name">Name</option>
+            <option value="marks">Marks</option>
+            <option value="attendance">Attendance</option>
+          </select>
+        </div>
+      </div>
 
       {status === "loading" && <p>Loading...</p>}
       {error && <p>{error}</p>}
 
-      {sortedStudents.map((student) => (
-        <Link key={student._id} to={`/${student._id}`}>
-          <div className="card">
-            {student.name} | {student.gender} | Marks: {student.marks} |
-            Attendance: {student.attendance}
-          </div>
-        </Link>
-      ))}
+      <div className="student-list">
+        {sortedStudents.map((student) => (
+          <Link key={student._id} to={`/${student._id}`}>
+            <div className="card class-card-minimal">
+              <div className="student-row">
+                <div className="student-left">
+                  <div className="avatar-sm">{student.name.charAt(0)}</div>
+
+                  <div>
+                    <h3>{student.name}</h3>
+
+                    <p>{student.gender}</p>
+                  </div>
+                </div>
+
+                <div className="student-right">
+                  <div className="student-stat">
+                    <span>Marks</span>
+                    <strong>{student.marks}</strong>
+                  </div>
+
+                  <div className="student-stat">
+                    <span>Attendance</span>
+                    <strong>{student.attendance}%</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };

@@ -10,29 +10,49 @@ const StudentList = () => {
 
   if (addStudent) {
     return (
-      <div>
+      <div className="page form-card">
         <StudentForm onSuccess={() => setAddStudent(false)} />
-        <button onClick={() => setAddStudent(false)}>Back to List</button>
       </div>
     );
   }
 
   return (
-    <div className="page stack">
-      <h1>Students List</h1>
+    <div className="stack">
+      <div className="section-title">
+        <div>
+          <h2>Students</h2>
+          <p>Manage enrolled students and academic performance.</p>
+        </div>
 
-      <button onClick={() => setAddStudent(true)}>Add Student</button>
+        <button onClick={() => setAddStudent(true)}>Add Student</button>
+      </div>
 
-      {status === "loading" && <p>Loading...</p>}
+      {status === "loading" && <p>Loading students...</p>}
       {error && <p>{error}</p>}
 
-      {students.map((student) => (
-        <Link to={`/${student._id}`} key={student._id}>
-          <div className="card">
-            {student.name} (Age: {student.age})
-          </div>{" "}
-        </Link>
-      ))}
+      <div className="grid-3">
+        {students.map((student) => (
+          <Link to={`/${student._id}`} key={student._id}>
+            <div className="card">
+              <div className="card-top">
+                <div className="avatar">{student.name.charAt(0)}</div>
+
+                <span className="badge">Grade {student.grade}</span>
+              </div>
+
+              <h3 style={{ marginTop: "1rem" }}>{student.name}</h3>
+
+              <p>{student.gender}</p>
+
+              <div className="details">
+                <p>Attendance: {student.attendance}%</p>
+                <p>Marks: {student.marks}</p>
+                <p>Age: {student.age}</p>
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
     </div>
   );
 };
