@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate, useParams, Link } from "react-router-dom";
+import { toast } from "react-toastify";
 import { deleteStudentAsync, fetchStudents } from "../features/studentsSlice";
 
 const StudentDetails = () => {
@@ -16,9 +17,16 @@ const StudentDetails = () => {
   }, [dispatch, students.length]);
 
   const handleDelete = async () => {
-    if (window.confirm("Delete this student?")) {
+    try {
       await dispatch(deleteStudentAsync(id)).unwrap();
-      navigate("/");
+
+      toast.success("Student deleted successfully!");
+
+      navigate("/students");
+    } catch (err) {
+      toast.error(
+        err?.message || "Failed to delete student. Please try again.",
+      );
     }
   };
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addStudentAsync, updateStudentAsync } from "../features/studentsSlice";
 import { useLocation, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const StudentForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
@@ -32,41 +33,56 @@ const StudentForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !age || !grade || !gender) {
-      setError("Please fill all required fields");
+    if (!name || !age || !grade || !gender || !marks || !attendance) {
+      const message = "Please fill all required fields";
+
+      setError(message);
+      toast.error(message);
+
       return;
     }
 
-    const studentData = {
-      name,
-      age: Number(age),
-      grade,
-      gender,
-      marks: Number(marks),
-      attendance: Number(attendance),
-    };
+    try {
+      const studentData = {
+        name,
+        age: Number(age),
+        grade,
+        gender,
+        marks: Number(marks),
+        attendance: Number(attendance),
+      };
 
-    if (existingStudent) {
-      await dispatch(
-        updateStudentAsync({
-          id: existingStudent._id,
-          updatedStudent: studentData,
-        }),
-      ).unwrap();
+      if (existingStudent) {
+        await dispatch(
+          updateStudentAsync({
+            id: existingStudent._id,
+            updatedStudent: studentData,
+          }),
+        ).unwrap();
 
-      navigate("/");
-    } else {
-      await dispatch(addStudentAsync(studentData)).unwrap();
+        toast.success("Student updated successfully!");
+
+        navigate("/students");
+      } else {
+        await dispatch(addStudentAsync(studentData)).unwrap();
+
+        toast.success("Student added successfully!");
+      }
+
+      setName("");
+      setAge("");
+      setGrade("");
+      setGender("");
+      setMarks("");
+      setAttendance("");
+      setError("");
+
+      onSuccess && onSuccess();
+    } catch (err) {
+      console.error(err);
+
+      toast.error(err?.message || "Something went wrong. Please try again.");
     }
-
-    setName("");
-    setAge("");
-    setGrade("");
-    setGender("");
-    setMarks("");
-    setAttendance("");
-
-    onSuccess && onSuccess();
   };
 
   return (
@@ -76,33 +92,52 @@ const StudentForm = ({ onSuccess }) => {
       {error && <p className="subtle">{error}</p>}
 
       <div>
-        <label>Name</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-
-      <div>
-        <label>Age</label>
+        <label>Name*</label>
         <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setError("");
+          }}
         />
       </div>
 
       <div>
-        <label>Grade</label>
-        <input value={grade} onChange={(e) => setGrade(e.target.value)} />
+        <label>Age*</label>
+        <input
+          type="number"
+          value={age}
+          onChange={(e) => {
+            setAge(e.target.value);
+            setError("");
+          }}
+        />
       </div>
 
       <div>
-        <label>Gender</label>
+        <label>Grade*</label>
+        <input
+          value={grade}
+          onChange={(e) => {
+            setGrade(e.target.value);
+            setError("");
+          }}
+        />
+      </div>
+
+      <div>
+        <label>Gender*</label>
+
         <div className="radio-group">
           <label>
             <input
               type="radio"
               value="Male"
               checked={gender === "Male"}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {
+                setGender(e.target.value);
+                setError("");
+              }}
             />
             Male
           </label>
@@ -112,7 +147,10 @@ const StudentForm = ({ onSuccess }) => {
               type="radio"
               value="Female"
               checked={gender === "Female"}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {
+                setGender(e.target.value);
+                setError("");
+              }}
             />
             Female
           </label>
@@ -120,20 +158,26 @@ const StudentForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label>Marks</label>
+        <label>Marks*</label>
         <input
           type="number"
           value={marks}
-          onChange={(e) => setMarks(e.target.value)}
+          onChange={(e) => {
+            setMarks(e.target.value);
+            setError("");
+          }}
         />
       </div>
 
       <div>
-        <label>Attendance</label>
+        <label>Attendance*</label>
         <input
           type="number"
           value={attendance}
-          onChange={(e) => setAttendance(e.target.value)}
+          onChange={(e) => {
+            setAttendance(e.target.value);
+            setError("");
+          }}
         />
       </div>
 

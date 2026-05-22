@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { addTeacherAsync, updateTeacherAsync } from "../features/teacherSlice";
+import { toast } from "react-toastify";
 
 const TeacherForm = ({ onSuccess }) => {
   const dispatch = useDispatch();
@@ -29,39 +30,58 @@ const TeacherForm = ({ onSuccess }) => {
     e.preventDefault();
 
     if (!name || !age || !gender || subjects.length === 0) {
-      setError("Please fill all required fields");
+      const message = "Please fill all required fields";
+
+      setError(message);
+
+      toast.error(message);
+
       return;
     }
 
-    const teacherData = {
-      name,
-      age: Number(age),
-      gender,
-      subjects,
-    };
+    try {
+      const teacherData = {
+        name,
+        age: Number(age),
+        gender,
+        subjects,
+      };
 
-    if (existingTeacher) {
-      await dispatch(
-        updateTeacherAsync({
-          id: existingTeacher._id,
-          updatedData: teacherData,
-        }),
-      ).unwrap();
-      navigate("/teachers");
-    } else {
-      await dispatch(addTeacherAsync(teacherData)).unwrap();
+      if (existingTeacher) {
+        await dispatch(
+          updateTeacherAsync({
+            id: existingTeacher._id,
+            updatedData: teacherData,
+          }),
+        ).unwrap();
+
+        toast.success("Teacher updated successfully!");
+
+        navigate("/teachers");
+      } else {
+        await dispatch(addTeacherAsync(teacherData)).unwrap();
+
+        toast.success("Teacher added successfully!");
+      }
+
+      setName("");
+      setAge("");
+      setGender("");
+      setSubjects([]);
+      setError("");
+
+      onSuccess && onSuccess();
+    } catch (err) {
+      console.error(err);
+
+      toast.error(err?.message || "Something went wrong. Please try again.");
     }
-
-    setName("");
-    setAge("");
-    setGender("");
-    setSubjects([]);
-
-    onSuccess && onSuccess();
   };
 
   const handleChange = (e) => {
     const { value, checked } = e.target;
+
+    setError("");
 
     if (checked) {
       setSubjects([...subjects, value]);
@@ -77,38 +97,54 @@ const TeacherForm = ({ onSuccess }) => {
       {error && <p className="subtle">{error}</p>}
 
       <div>
-        <label>Name</label>
-        <input value={name} onChange={(e) => setName(e.target.value)} />
-      </div>
-
-      <div>
-        <label>Age</label>
+        <label>Name*</label>
         <input
-          type="number"
-          value={age}
-          onChange={(e) => setAge(e.target.value)}
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setError("");
+          }}
         />
       </div>
 
       <div>
-        <label>Gender</label>
+        <label>Age*</label>
+        <input
+          type="number"
+          value={age}
+          onChange={(e) => {
+            setAge(e.target.value);
+            setError("");
+          }}
+        />
+      </div>
+
+      <div>
+        <label>Gender*</label>
+
         <div className="radio-group">
-          <label className="">
+          <label>
             <input
               type="radio"
               value="Male"
               checked={gender === "Male"}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {
+                setGender(e.target.value);
+                setError("");
+              }}
             />
             Male
           </label>
 
-          <label className="">
+          <label>
             <input
               type="radio"
               value="Female"
               checked={gender === "Female"}
-              onChange={(e) => setGender(e.target.value)}
+              onChange={(e) => {
+                setGender(e.target.value);
+                setError("");
+              }}
             />
             Female
           </label>
@@ -116,10 +152,11 @@ const TeacherForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label>Subjects</label>
+        <label>Subjects*</label>
+
         <div className="checkbox-group">
           {["Mathematics", "Physics", "Chemistry"].map((sub) => (
-            <label key={sub} className="">
+            <label key={sub}>
               <input
                 type="checkbox"
                 checked={subjects.includes(sub)}

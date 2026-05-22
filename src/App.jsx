@@ -1,5 +1,7 @@
 import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import Students from "./features/Students";
 import School from "./features/School";
 import NavBar from "./components/NavBar";
@@ -27,6 +29,16 @@ function App() {
           <Route path="/teachers" element={<Teachers />}></Route>
           <Route path="/teachers/:id" element={<TeacherDetails />}></Route>
         </Routes>
+        <ToastContainer
+          position="top-right"
+          autoClose={3000}
+          theme="dark"
+          hideProgressBar={false}
+          newestOnTop
+          closeOnClick
+          pauseOnHover
+          draggable
+        />{" "}
       </Router>
     </>
   );

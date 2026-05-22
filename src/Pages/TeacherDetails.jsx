@@ -5,6 +5,7 @@ import {
   deleteTeacherAsync,
   fetchTeacherAsync,
 } from "../features/teacherSlice";
+import { toast } from "react-toastify";
 
 const TeacherDetails = () => {
   const { teachers, error, status } = useSelector((state) => state.teachers);
@@ -17,9 +18,16 @@ const TeacherDetails = () => {
   }, [teachers.length, dispatch]);
 
   const handleDelete = async () => {
-    if (window.confirm("Delete this teacher?")) {
+    try {
       await dispatch(deleteTeacherAsync(id)).unwrap();
+
+      toast.success("Teacher deleted successfully!");
+
       navigate("/teachers");
+    } catch (err) {
+      toast.error(
+        err?.message || "Failed to delete teacher. Please try again.",
+      );
     }
   };
 
