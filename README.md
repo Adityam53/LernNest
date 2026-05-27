@@ -29,6 +29,9 @@ npm run dev
 * React Router
 * Redux Toolkit
 * Axios
+* Express
+* Node JS
+* MongoDB
 
 ---
 
@@ -39,12 +42,6 @@ Watch a walkthrough of all major features of this app: [Loom Video](https://www.
 ---
 
 ## Features
-
-**Authentication (Optional / Backend Ready)**
-
-* Supports backend integration for authentication
-* JWT-based flow supported (if backend connected)
-
 ---
 
 **Student View**
@@ -139,41 +136,198 @@ Watch a walkthrough of all major features of this app: [Loom Video](https://www.
 
 ## API Reference
 
-### **GET /students**<br>
+### Students Endpoints
 
-Fetch all students
+#### GET `/students`
+
+Fetch all students from the database.
+
+**Response**
+
+```json
+[
+  {
+    "_id": "65f123abc456",
+    "name": "John Doe",
+    "age": 16,
+    "grade": "10th",
+    "gender": "Male",
+    "marks": 88,
+    "attendance": 95
+  }
+]
+```
 
 ---
 
-### **POST /students**<br>
+#### POST `/students`
 
-Add a new student
+Create a new student record.
 
-Sample Request:<br>
+**Sample Request**
 
-```id="7rq5wh"
+```json
 {
-  "name": "John",
+  "name": "John Doe",
   "age": 16,
   "grade": "10th",
-  "gender": "Male"
+  "gender": "Male",
+  "marks": 88,
+  "attendance": 95
+}
+```
+
+**Response**
+
+```json
+{
+  "_id": "65f123abc456",
+  "name": "John Doe",
+  "age": 16,
+  "grade": "10th",
+  "gender": "Male",
+  "marks": 88,
+  "attendance": 95
 }
 ```
 
 ---
 
-### **POST /students/:id**<br>
+#### PUT `/students/:id`
 
-Update student details
+Update an existing student's information.
+
+**Sample Request**
+
+```json
+{
+  "marks": 92,
+  "attendance": 97
+}
+```
+
+**Response**
+
+```json
+{
+  "_id": "65f123abc456",
+  "name": "John Doe",
+  "age": 16,
+  "grade": "10th",
+  "gender": "Male",
+  "marks": 92,
+  "attendance": 97
+}
+```
 
 ---
 
-### **DELETE /students/:id**<br>
+#### DELETE `/students/:id`
 
-Delete student
+Delete a student by ID.
+
+**Response**
+
+```json
+{
+  "message": "Student deleted successfully",
+  "student": {
+    "_id": "65f123abc456",
+    "name": "John Doe"
+  }
+}
+```
 
 ---
 
+### Teachers Endpoints
+
+#### GET `/teachers`
+
+Fetch all teachers from the database.
+
+**Response**
+
+```json
+[
+  {
+    "_id": "65f456def789",
+    "name": "Sarah Johnson",
+    "subject": "Mathematics",
+    "experience": 8
+  }
+]
+```
+
+---
+
+#### POST `/teachers`
+
+Create a new teacher record.
+
+**Sample Request**
+
+```json
+{
+  "name": "Sarah Johnson",
+  "subject": "Mathematics",
+  "experience": 8
+}
+```
+
+**Response**
+
+```json
+{
+  "_id": "65f456def789",
+  "name": "Sarah Johnson",
+  "subject": "Mathematics",
+  "experience": 8
+}
+```
+
+---
+
+#### PUT `/teachers/:id`
+
+Update an existing teacher's information.
+
+**Sample Request**
+
+```json
+{
+  "experience": 10
+}
+```
+
+**Response**
+
+```json
+{
+  "_id": "65f456def789",
+  "name": "Sarah Johnson",
+  "subject": "Mathematics",
+  "experience": 10
+}
+```
+
+---
+
+#### DELETE `/teachers/:id`
+
+Delete a teacher by ID.
+
+**Response**
+
+```json
+{
+  "message": "Teacher deleted successfully!",
+  "deletedTeacher": {
+    "_id": "65f456def789",
+    "name": "Sarah Johnson"
+  }
+}
+```
 ## Contact
 
 For bugs or feature requests, please reach out to ([adityamoorjmalani53@gmail.com](mailto:adityamoorjmalani53@gmail.com))
