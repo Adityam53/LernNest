@@ -97,12 +97,32 @@ const ClassView = () => {
                 <div className="student-right">
                   <div className="student-stat">
                     <span>Marks</span>
-                    <strong>{student.marks}</strong>
+                    <strong
+                      className={`${
+                        student?.marks >= 80
+                          ? "marks-high"
+                          : student?.marks >= 60
+                            ? "marks-average"
+                            : "marks-low"
+                      }`}
+                    >
+                      {student.marks}
+                    </strong>
                   </div>
 
                   <div className="student-stat">
                     <span>Attendance</span>
-                    <strong>{student.attendance}%</strong>
+                    <strong
+                      className={`${
+                        student.attendance >= 85
+                          ? "attendance-good-txt"
+                          : student.attendance >= 70
+                            ? "attendance-average-txt"
+                            : "attendance-low-txt"
+                      }`}
+                    >
+                      {student.attendance}%
+                    </strong>
                   </div>
                 </div>
               </div>

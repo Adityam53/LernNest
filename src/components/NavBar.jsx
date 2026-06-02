@@ -1,23 +1,25 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
-
+import { FiMenu } from "react-icons/fi";
 const NavBar = () => {
   const [open, setOpen] = useState(false);
 
   return (
     <>
       <nav className="nav">
-        <Link to="/" className="brand">
-          <h3>Learnest</h3>
-          <span>Modern Learning Platform</span>
-        </Link>
+        <div className="brand-wrapper">
+          <Link to="/" className="brand">
+            <h3>Learnest</h3>
+            <span>Modern Learning Platform</span>
+          </Link>
 
-        <div className="hamburger" onClick={() => setOpen(true)}>
-          <span />
-          <span />
-          <span />
+          <button
+            className={`nav-toggle ${open ? "active" : ""}`}
+            onClick={() => setOpen(!open)}
+          >
+            <FiMenu />
+          </button>
         </div>
-
         <ul className={`nav-links ${open ? "show" : ""}`}>
           <li>
             <Link to="/" onClick={() => setOpen(false)}>
