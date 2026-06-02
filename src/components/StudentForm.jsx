@@ -122,6 +122,7 @@ const StudentForm = ({ onSuccess }) => {
             setGrade(e.target.value);
             setError("");
           }}
+          type="text"
         />
       </div>
 
@@ -181,7 +182,7 @@ const StudentForm = ({ onSuccess }) => {
         />
       </div>
 
-      <button type="submit">
+      <button className="btn-primary" type="submit">
         {existingStudent ? "Save Changes" : "Add Student"}
       </button>
     </form>

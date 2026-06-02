@@ -58,7 +58,7 @@ h1 {
   font-size: clamp(3rem, 8vw, 5rem);
   line-height: 0.95;
   font-weight: 800;
-  letter-spacing: -3px;
+  letter-spacing: -2px;
   margin: 0;
 }
 
@@ -76,27 +76,6 @@ h3 {
 p {
   color: var(--muted);
   line-height: 1.7;
-}
-
-button {
-  border: none;
-  border-radius: 16px;
-  padding: 0.95rem 1.3rem;
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: white;
-  cursor: pointer;
-  font-size: 0.95rem;
-  font-weight: 600;
-  transition: all 0.25s ease;
-}
-
-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
-}
-
-button:active {
-  transform: scale(0.98);
 }
 
 input,

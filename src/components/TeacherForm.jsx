@@ -169,7 +169,9 @@ const TeacherForm = ({ onSuccess }) => {
         </div>
       </div>
 
-      <button type="submit">{existingTeacher ? "Save" : "Add Teacher"}</button>
+      <button className="btn-primary" type="submit">
+        {existingTeacher ? "Save" : "Add Teacher"}
+      </button>
     </form>
   );
 };

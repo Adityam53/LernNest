@@ -24,32 +24,65 @@ const TeacherList = () => {
           <p>Manage faculty, subjects and educational workflow.</p>
         </div>
 
-        <button onClick={() => setAddTeacher(true)}>Add Teacher</button>
+        <button className="btn-secondary" onClick={() => setAddTeacher(true)}>
+          Add Teacher
+        </button>
       </div>
+      {status === "loading" && (
+        <div className="students-loading">Loading teachers...</div>
+      )}
 
-      {status === "loading" && <p>Loading teachers...</p>}
-      {error && <p>{error}</p>}
+      {error && <div className="students-error">{error}</div>}
 
       <div className="grid-3">
         {teachers.map((teacher) => (
-          <Link to={`/teachers/${teacher._id}`} key={teacher._id}>
-            <div className="card">
+          <Link
+            to={`/teachers/${teacher._id}`}
+            key={teacher._id}
+            className="student-link"
+          >
+            <div className="card teacher-card">
               <div className="card-top">
-                <div className="avatar">{teacher.name.charAt(0)}</div>
+                <div className="teacher-avatar">{teacher.name.charAt(0)}</div>
 
-                <span className="badge">Faculty</span>
+                <span className="badge faculty-badge">Faculty</span>
               </div>
 
-              <h3 style={{ marginTop: "1rem" }}>{teacher.name}</h3>
+              <h3 className="teacher-name">{teacher.name}</h3>
 
-              <p>{teacher.gender}</p>
+              <span
+                className={`teacher-gender ${
+                  teacher.gender?.toLowerCase() === "male"
+                    ? "gender-male"
+                    : teacher.gender?.toLowerCase() === "female"
+                      ? "gender-female"
+                      : "gender-other"
+                }`}
+              >
+                {teacher.gender}
+              </span>
 
-              <div className="row">
-                {teacher.subjects.map((sub) => (
-                  <span className="badge" key={sub}>
-                    {sub}
-                  </span>
-                ))}
+              <div className="subject-section">
+                <span className="subject-label">Subjects Taught</span>
+
+                <div className="subject-list">
+                  {teacher.subjects.slice(0, 3).map((sub) => (
+                    <span className="subject-badge" key={sub}>
+                      {sub}
+                    </span>
+                  ))}
+
+                  {teacher.subjects.length > 3 && (
+                    <span className="subject-badge">
+                      +{teacher.subjects.length - 3}
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              <div className="subject-count">
+                <span>Total Subjects</span>
+                <strong>{teacher.subjects.length}</strong>
               </div>
             </div>
           </Link>

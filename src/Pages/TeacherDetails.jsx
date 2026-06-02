@@ -38,28 +38,77 @@ const TeacherDetails = () => {
   if (error) return <p>{error}</p>;
 
   return (
-    <div className="page">
-      <div className="card">
-        <h2>{teacher?.name}</h2>
-        <div className="details">
-          <p>Age: {teacher?.age}</p>
-          <p>Gender: {teacher?.gender}</p>
-          <p>
-            Subjects:{" "}
-            {teacher?.subjects?.map((sub) => (
-              <span className="badge" key={sub}>
-                {sub}
-              </span>
-            ))}
-          </p>
+    <div className="stack">
+      <div className="card teacher-hero-card">
+        <div className="student-profile">
+          <div className="teacher-avatar teacher-avatar-lg">
+            {teacher?.name?.charAt(0)}
+          </div>
+
+          <div>
+            <h1 className="student-title">{teacher?.name}</h1>
+
+            <span
+              className={`teacher-gender-badge ${
+                teacher?.gender === "Male"
+                  ? "gender-male"
+                  : teacher?.gender === "Female"
+                    ? "gender-female"
+                    : "gender-other"
+              }`}
+            >
+              {teacher?.gender}
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* Quick Overview */}
+
+      <div className="student-stats">
+        <div className="student-stat-card neutral-card">
+          <span>Age</span>
+          <strong>{teacher?.age}</strong>
         </div>
 
-        <div className="row">
-          <button onClick={handleDelete}>Delete</button>
-          <Link to="/editTeacher" state={{ teacher }}>
-            <button>Edit</button>
-          </Link>
+        <div className="student-stat-card subjects-card">
+          <span>Subjects</span>
+          <strong>{teacher?.subjects?.length}</strong>
         </div>
+
+        <div className="student-stat-card faculty-card">
+          <span>Faculty Status</span>
+
+          <strong>
+            {teacher?.subjects?.length >= 4 ? "Senior" : "Active"}
+          </strong>
+        </div>
+      </div>
+
+      {/* Subjects */}
+
+      <div className="student-section">
+        <h3>Assigned Subjects</h3>
+
+        <div className="teacher-subjects-grid">
+          {teacher?.subjects?.map((sub) => (
+            <span className="teacher-subject-badge" key={sub}>
+              {sub}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* Actions */}
+
+      <div className="student-page-actions">
+        <Link to="/editTeacher" state={{ teacher }}>
+          <button className="btn-primary">Edit Teacher</button>
+        </Link>
+
+        <button className="btn-danger" onClick={handleDelete}>
+          Delete Teacher
+        </button>
       </div>
     </div>
   );

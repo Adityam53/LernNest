@@ -22,11 +22,11 @@ const HomePage = () => {
 
             <div className="hero-buttons">
               <Link to="/students">
-                <button>Explore Students</button>
+                <button className="btn-secondary">Explore Students</button>
               </Link>
 
               <Link to="/school">
-                <button className="secondary-btn">View Analytics</button>
+                <button className="btn-secondary">View Analytics</button>
               </Link>
             </div>
           </div>

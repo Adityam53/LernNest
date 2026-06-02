@@ -19,35 +19,81 @@ const StudentList = () => {
   return (
     <div className="stack">
       <div className="section-title">
-        <div>
+        <div className="students-header">
           <h2>Students</h2>
           <p>Manage enrolled students and academic performance.</p>
         </div>
 
-        <button onClick={() => setAddStudent(true)}>Add Student</button>
+        <button className="btn-secondary" onClick={() => setAddStudent(true)}>
+          + Add Student
+        </button>
       </div>
 
-      {status === "loading" && <p>Loading students...</p>}
-      {error && <p>{error}</p>}
+      {status === "loading" && (
+        <div className="students-loading">Loading students...</div>
+      )}
+
+      {error && <div className="students-error">{error}</div>}
 
       <div className="grid-3">
         {students.map((student) => (
-          <Link to={`/${student._id}`} key={student._id}>
-            <div className="card">
+          <Link
+            to={`/${student._id}`}
+            key={student._id}
+            className="student-link"
+          >
+            <div className="card student-card">
               <div className="card-top">
                 <div className="avatar">{student.name.charAt(0)}</div>
 
                 <span className="badge">Grade {student.grade}</span>
               </div>
 
-              <h3 style={{ marginTop: "1rem" }}>{student.name}</h3>
+              <h3 className="student-name">{student.name}</h3>
 
-              <p>{student.gender}</p>
+              <p
+                className={`teacher-gender ${
+                  student.gender?.toLowerCase() === "male"
+                    ? "gender-male"
+                    : student.gender?.toLowerCase() === "female"
+                      ? "gender-female"
+                      : "gender-other"
+                }`}
+              >
+                {student.gender}
+              </p>
 
-              <div className="details">
-                <p>Attendance: {student.attendance}%</p>
-                <p>Marks: {student.marks}</p>
-                <p>Age: {student.age}</p>
+              <div className="student-stats">
+                <div
+                  className={`student-stat-card ${
+                    student.attendance >= 85
+                      ? "attendance-good"
+                      : student.attendance >= 70
+                        ? "attendance-average"
+                        : "attendance-low"
+                  }`}
+                >
+                  <span>Attendance</span>
+                  <strong>{student.attendance}%</strong>
+                </div>
+
+                <div
+                  className={`student-stat-card ${
+                    student?.marks >= 80
+                      ? "marks-high"
+                      : student?.marks >= 60
+                        ? "marks-average"
+                        : "marks-low"
+                  }`}
+                >
+                  <span>Marks</span>
+                  <strong>{student?.marks}</strong>
+                </div>
+
+                <div className="student-stat-card">
+                  <span>Age</span>
+                  <strong>{student.age}</strong>
+                </div>
               </div>
             </div>
           </Link>

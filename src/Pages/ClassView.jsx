@@ -80,8 +80,17 @@ const ClassView = () => {
 
                   <div>
                     <h3>{student.name}</h3>
-
-                    <p>{student.gender}</p>
+                    <p
+                      className={`teacher-gender ${
+                        student.gender?.toLowerCase() === "male"
+                          ? "gender-male"
+                          : student.gender?.toLowerCase() === "female"
+                            ? "gender-female"
+                            : "gender-other"
+                      }`}
+                    >
+                      {student.gender}
+                    </p>{" "}
                   </div>
                 </div>
 
