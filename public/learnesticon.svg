@@ -1,0 +1,59 @@
+<svg width="256" height="256" viewBox="0 0 256 256" fill="none" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Background -->
+  <rect width="256" height="256" rx="56" fill="#0F172A"></rect>
+
+  <!-- Glow -->
+  <circle cx="128" cy="128" r="90" fill="#8B5CF6" opacity="0.18"></circle>
+
+  <!-- Book -->
+  <path d="M48 150
+       L120 132
+       L120 200
+       L48 218
+       Z" fill="#1E293B"></path>
+
+  <path d="M136 132
+       L208 150
+       L208 218
+       L136 200
+       Z" fill="#172033"></path>
+
+  <!-- Book spine -->
+  <rect x="120" y="126" width="16" height="84" rx="8" fill="#111827"></rect>
+
+  <!-- Learnest L -->
+  <path d="M104 58
+       L104 136
+       L160 136" stroke="url(#learnestGrad)" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"></path>
+
+  <!-- Eye -->
+  <circle cx="136" cy="95" r="6" fill="#E9D5FF"></circle>
+
+  <!-- Wink -->
+  <path d="M154 94
+       L168 88" stroke="#E9D5FF" stroke-width="5" stroke-linecap="round"></path>
+
+  <!-- Smile -->
+  <path d="M135 112
+       Q150 124 166 112" stroke="#C4B5FD" stroke-width="4" fill="none" stroke-linecap="round"></path>
+
+  <!-- Sparkle -->
+  <path d="M192 60
+       L196 70
+       L206 74
+       L196 78
+       L192 88
+       L188 78
+       L178 74
+       L188 70
+       Z" fill="#A78BFA"></path>
+
+  <defs>
+    <linearGradient id="learnestGrad" x1="80" y1="60" x2="170" y2="150">
+      <stop offset="0%" stop-color="#8B5CF6"></stop>
+      <stop offset="100%" stop-color="#6366F1"></stop>
+    </linearGradient>
+  </defs>
+
+</svg>
