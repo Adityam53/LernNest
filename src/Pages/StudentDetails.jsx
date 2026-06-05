@@ -49,7 +49,11 @@ const StudentDetails = () => {
           <div>
             <h1 className="student-title">{studentDetails?.name}</h1>
 
-            <p className="student-subtitle">{studentDetails?.gender}</p>
+            <p
+              className={`teacher-gender ${studentDetails?.gender === "Male" ? "gender-male" : "gender-female"}`}
+            >
+              {studentDetails?.gender}
+            </p>
           </div>
         </div>
       </div>

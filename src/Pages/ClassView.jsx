@@ -42,8 +42,8 @@ const ClassView = () => {
   };
 
   return (
-    <div className="page stack class-view">
-      <h1 className="class-title">Class View</h1>
+    <div className="stack class-view">
+      <h2 className="class-title">Class View</h2>
 
       <div className="class-controls">
         <div className="control-group">
@@ -100,10 +100,10 @@ const ClassView = () => {
                     <strong
                       className={`${
                         student?.marks >= 80
-                          ? "marks-high"
+                          ? "marks-high-txt"
                           : student?.marks >= 60
-                            ? "marks-average"
-                            : "marks-low"
+                            ? "marks-average-txt"
+                            : "marks-low-txt"
                       }`}
                     >
                       {student.marks}

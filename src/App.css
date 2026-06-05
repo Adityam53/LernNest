@@ -617,7 +617,7 @@
   border-color: rgba(34, 197, 94, 0.25);
 }
 .attendance-good-txt,
-.marks-high {
+.marks-high-txt {
   color: rgba(0, 238, 87, 0.636);
 }
 .attendance-average {
@@ -625,7 +625,7 @@
   border-color: rgba(245, 158, 11, 0.25);
 }
 .attendance-average-txt,
-.marks-average {
+.marks-average-txt {
   color: rgba(245, 159, 11, 0.565);
 }
 .attendance-low {
@@ -633,7 +633,7 @@
   border-color: rgba(239, 68, 68, 0.25);
 }
 .attendance-low-txt,
-.marks-low {
+.marks-low-txt {
   color: rgba(239, 68, 68, 0.717);
 }
 /* Loading */
@@ -864,6 +864,7 @@
   transform: translateY(-2px);
 }
 .marks-high {
+  color: rgba(0, 238, 87, 0.636);
   background: rgba(34, 197, 94, 0.12);
   border-color: rgba(34, 197, 94, 0.28);
 }
@@ -875,6 +876,7 @@
 .marks-average {
   background: rgba(245, 158, 11, 0.12);
   border-color: rgba(245, 158, 11, 0.28);
+  color: rgba(245, 159, 11, 0.565);
 }
 
 /* .marks-average strong {
@@ -884,6 +886,7 @@
 .marks-low {
   background: rgba(239, 68, 68, 0.12);
   border-color: rgba(239, 68, 68, 0.28);
+  color: rgba(239, 68, 68, 0.717);
 }
 
 /* .marks-low strong {
@@ -1075,21 +1078,6 @@
 
   font-size: 0.82rem;
   font-weight: 600;
-}
-
-.gender-male {
-  background: rgba(59, 130, 246, 0.15);
-  color: #60a5fa;
-}
-
-.gender-female {
-  background: rgba(236, 72, 153, 0.15);
-  color: #f472b6;
-}
-
-.gender-other {
-  background: rgba(245, 158, 11, 0.15);
-  color: #fbbf24;
 }
 
 .subjects-card {

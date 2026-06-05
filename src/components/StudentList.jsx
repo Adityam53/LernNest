@@ -10,7 +10,7 @@ const StudentList = () => {
 
   if (addStudent) {
     return (
-      <div className="page form-card">
+      <div className="form-card">
         <StudentForm onSuccess={() => setAddStudent(false)} />
       </div>
     );
@@ -20,7 +20,7 @@ const StudentList = () => {
     <div className="stack">
       <div className="section-title">
         <div className="students-header">
-          <h2>Students</h2>
+          <h2 className="class-title">Students</h2>
           <p>Manage enrolled students and academic performance.</p>
         </div>
 
