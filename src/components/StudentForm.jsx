@@ -19,6 +19,8 @@ const StudentForm = ({ onSuccess }) => {
   const [attendance, setAttendance] = useState("");
   const [error, setError] = useState("");
 
+  const grades = ["O", "A", "B", "C", "D", "F"];
+
   useEffect(() => {
     if (!existingStudent) return;
 
@@ -33,7 +35,14 @@ const StudentForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !age || !grade || !gender || !marks || !attendance) {
+    if (
+      !name.trim() ||
+      !grade ||
+      !gender ||
+      age === "" ||
+      marks === "" ||
+      attendance === ""
+    ) {
       const message = "Please fill all required fields";
 
       setError(message);
@@ -103,10 +112,12 @@ const StudentForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label>Age*</label>
+        <label>Age* (min 5 max 120)</label>
         <input
           type="number"
           value={age}
+          min={5}
+          max={120}
           onChange={(e) => {
             setAge(e.target.value);
             setError("");
@@ -116,14 +127,21 @@ const StudentForm = ({ onSuccess }) => {
 
       <div>
         <label>Grade*</label>
-        <input
+        <select
           value={grade}
           onChange={(e) => {
             setGrade(e.target.value);
             setError("");
           }}
-          type="text"
-        />
+        >
+          <option value="">Select Grade</option>
+
+          {grades.map((g) => (
+            <option key={g} value={g}>
+              {g}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>
@@ -159,10 +177,12 @@ const StudentForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label>Marks*</label>
+        <label>Marks* </label>
         <input
           type="number"
           value={marks}
+          min={0}
+          max={100}
           onChange={(e) => {
             setMarks(e.target.value);
             setError("");
@@ -175,6 +195,8 @@ const StudentForm = ({ onSuccess }) => {
         <input
           type="number"
           value={attendance}
+          max={100}
+          min={0}
           onChange={(e) => {
             setAttendance(e.target.value);
             setError("");

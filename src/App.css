@@ -60,7 +60,8 @@
 }
 
 .brand h3 {
-  font-size: 1.2rem;
+  font-size: 1.5rem;
+  color: var(--text);
 }
 
 .brand span {
@@ -1108,6 +1109,94 @@
   color: #c7d2fe;
 
   font-weight: 600;
+}
+
+.faculty-overview-card {
+  padding: 1.75rem;
+}
+
+.overview-grid {
+  margin-top: 1rem;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.overview-item {
+  padding: 1.2rem;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: all 0.25s ease;
+}
+
+.overview-item:hover {
+  transform: translateY(-2px);
+}
+
+.overview-item span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 0.8rem;
+
+  margin-bottom: 0.6rem;
+
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.overview-item strong {
+  font-size: 1.8rem;
+  line-height: 1;
+}
+.subject-distribution-grid {
+  margin-top: 1.25rem;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+}
+
+.subject-distribution-item {
+  padding: 1rem 1.2rem;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.03);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: all 0.25s ease;
+}
+
+.subject-distribution-item:hover {
+  transform: translateY(-3px);
+
+  border-color: rgba(99, 102, 241, 0.25);
+
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.subject-distribution-item span {
+  display: block;
+
+  color: var(--muted);
+
+  font-size: 0.85rem;
+
+  margin-bottom: 0.5rem;
+}
+
+.subject-distribution-item strong {
+  font-size: 1.8rem;
+  line-height: 1;
 }
 @media (max-width: 760px) {
   .student-hero {

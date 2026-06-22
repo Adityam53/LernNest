@@ -29,7 +29,7 @@ const TeacherForm = ({ onSuccess }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!name || !age || !gender || subjects.length === 0) {
+    if (!name.trim() || age === "" || !gender || subjects.length === 0) {
       const message = "Please fill all required fields";
 
       setError(message);
@@ -108,10 +108,12 @@ const TeacherForm = ({ onSuccess }) => {
       </div>
 
       <div>
-        <label>Age*</label>
+        <label>Age* (min 18 max 120)</label>
         <input
           type="number"
           value={age}
+          min={18}
+          max={120}
           onChange={(e) => {
             setAge(e.target.value);
             setError("");
@@ -155,7 +157,18 @@ const TeacherForm = ({ onSuccess }) => {
         <label>Subjects*</label>
 
         <div className="checkbox-group">
-          {["Mathematics", "Physics", "Chemistry"].map((sub) => (
+          {[
+            "English Literature",
+            "Grammar",
+            "Mathematics",
+            "Physics",
+            "Chemistry",
+            "Biology",
+            "Economics",
+            "Business Studies",
+            "Art",
+            "Design",
+          ].map((sub) => (
             <label key={sub}>
               <input
                 type="checkbox"

@@ -9,8 +9,8 @@ const NavBar = () => {
       <nav className="nav">
         <div className="brand-wrapper">
           <Link to="/" className="brand">
-            <h3>Learnest</h3>
-            <span>Modern Learning Platform</span>
+            <h3>Edvora</h3>
+            <span>Modern Academic Management Platform</span>
           </Link>
 
           <button
