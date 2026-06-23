@@ -1,4 +1,4 @@
-# Student Management App – Redux Toolkit
+# Edvora School Management System
 
 A fullstack application to manage students and school data with full CRUD functionality, filtering, sorting, and reporting. The app uses Redux Toolkit for state management and integrates async operations for handling API-based data.
 Developed using React JS, React Router and Redux Toolkit, Express, Node.js, MongoDB, Chart.js. 
